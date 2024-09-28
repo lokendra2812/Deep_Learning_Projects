@@ -1,5 +1,5 @@
 import streamlit as st
-
+import pandas as pd
 
 # Project Details
 st.title("Automating Port Operations using Deep Learning")
@@ -18,5 +18,7 @@ st.write("""
     • Kayak
     • Paper_boat
 """)
+
+# Perform the following steps:
 
 
