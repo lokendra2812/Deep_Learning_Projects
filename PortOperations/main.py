@@ -6,6 +6,8 @@ from tensorflow.keras import Sequential
 import numpy as np
 import matplotlib.pyplot as plt
 import pathlib
+from PIL import Image
+
 
 # Project Details
 st.title("Automating Port Operations using Deep Learning")
@@ -25,13 +27,20 @@ st.write("""
     • Paper_boat
 """)
 
-# Perform the following steps:
-dataset_url = "https://storage.googleapis.com/download.tensorflow.org/example_images/flower_photos.tgz"
-data_dir = tf.keras.utils.get_file('flower_photos', origin=dataset_url, untar=True)
-data_dir = pathlib.Path(data_dir)
 
-data_dir
+def load_image(image_file):
+    img = Image.open(image_file)
+    return img
 
-len(list(data_dir.glob('*/*.jpg')))
+if st.button("Add Image to Classify "):
+    uploadFile = st.file_uploader(label="Upload image", type=['jpg', 'png'])
+    if uploadFile is not None:
+        img = load_image(uploadFile)
+        st.image(img, caption="Uploaded Image", use_column_width=True)
+        st.write("Image Uploaded Successfully")
+    else:
+        st.write("Make sure your image is in JPG/PNG format.")
+
+
 
 
