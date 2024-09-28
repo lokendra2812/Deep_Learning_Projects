@@ -1,5 +1,11 @@
 import streamlit as st
 import pandas as pd
+import tensorflow as tf
+from tensorflow.keras.layers import Dense, Conv2D, MaxPool2D
+from tensorflow.keras import Sequential
+import numpy as np
+import matplotlib.pyplot as plt
+import pathlib
 
 # Project Details
 st.title("Automating Port Operations using Deep Learning")
@@ -20,5 +26,12 @@ st.write("""
 """)
 
 # Perform the following steps:
+dataset_url = "https://storage.googleapis.com/download.tensorflow.org/example_images/flower_photos.tgz"
+data_dir = tf.keras.utils.get_file('flower_photos', origin=dataset_url, untar=True)
+data_dir = pathlib.Path(data_dir)
+
+data_dir
+
+len(list(data_dir.glob('*/*.jpg')))
 
 
